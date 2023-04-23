@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  email          String    @unique
+  emailValidated DateTime?
+  username       String    @unique
+  hashedPassword String
+  name           String
+
+  bio          String?
+  avatar       String   @default("https://placehold.co/100x100")
+  followingIds String[] @db.ObjectId
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  items StoreItem[]
+
+  loggedInToDcBot Boolean @default(false)
+  discordUserId   String?
+}
+
+model StoreItem {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  url         String
+  fileName    String
+  usedPrompt  String
+  displayName String
+  size        Int
+
+  downloads Int? @default(0)
+
+  forSale Boolean @default(false)
+  price   Int?    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

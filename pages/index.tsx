@@ -13,6 +13,7 @@ const Home: React.FC<IHomeProps> = (props) => {
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 1 }}
 			transition={{ duration: 0.5 }}
+			className='w-full max-w-[1440px] mx-auto'
 		>
 			<Header>
 				<div className='flex flex-col gap-12 w-1/3'>

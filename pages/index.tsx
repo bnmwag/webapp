@@ -1,5 +1,5 @@
 import Header from '@/components/layout/Header';
-import TrendingFeed from '@/components/layout/TrendingFeed';
+import TrendingFeed from '@/components/layout/Feed';
 import SearchBar from '@/components/SearchBar';
 import Image from 'next/image';
 import { motion } from 'framer-motion';

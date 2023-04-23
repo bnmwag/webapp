@@ -2,11 +2,11 @@ import React from 'react';
 import StoreItem from '../StoreItem';
 import useStoreItems from '@/hooks/useStoreItems';
 
-interface ITrendingFeedProps {
+interface IFeedProps {
 	userId?: string;
 }
 
-const TrendingFeed: React.FC<ITrendingFeedProps> = ({ userId }) => {
+const Feed: React.FC<IFeedProps> = ({ userId }) => {
 	const { data: storeItems = [] } = useStoreItems(userId);
 
 	return (
@@ -42,4 +42,4 @@ const TrendingFeed: React.FC<ITrendingFeedProps> = ({ userId }) => {
 	);
 };
 
-export default TrendingFeed;
+export default Feed;

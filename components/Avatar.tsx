@@ -14,30 +14,19 @@ const Avatar: React.FunctionComponent<IAvatarProps> = ({
 	isLarge,
 	hasBorder,
 }) => {
-	const router = useRouter();
 	const { data: fetchedUser } = useUser(userId);
-	const onClick = useCallback(
-		(event: any) => {
-			event.stopPropagation();
-
-			const url = `/users/${userId}`;
-
-			router.push(url);
-		},
-		[router, userId]
-	);
 
 	return (
 		<div
 			className={`
-        ${hasBorder ? 'border-4 border-black' : ''}
-        ${isLarge ? 'h-32' : 'h-12'}
-        ${isLarge ? 'w-32' : 'w-12'}
-        rounded-full 
-        hover:opacity-90
-        transition
-        cursor-pointer
-    `}
+       			${hasBorder ? 'border-4 border-black' : ''}
+       			${isLarge ? 'h-32' : 'h-12'}
+       			${isLarge ? 'w-32' : 'w-12'}
+       			rounded-full 
+       			hover:opacity-90
+       			transition
+       			cursor-pointer
+    		`}
 		>
 			<Image
 				width={isLarge ? 128 : 48}
@@ -48,9 +37,8 @@ const Avatar: React.FunctionComponent<IAvatarProps> = ({
 					width: '100%',
 					height: '100%',
 				}}
-				alt='avatr'
-				onClick={onClick}
-				src={fetchedUser?.s || '/images/placeholder.gif'}
+				alt={`${fetchedUser?.name}'s avatar image`}
+				src={fetchedUser?.avatar || '/images/placeholder.gif'}
 			/>
 		</div>
 	);

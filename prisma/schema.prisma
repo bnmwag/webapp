@@ -16,7 +16,7 @@ model User {
   name           String
 
   bio          String?
-  avatar       String   @default("https://placehold.co/100x100")
+  avatar       String?
   followingIds String[] @db.ObjectId
 
   updatedAt DateTime @updatedAt

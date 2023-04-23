@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import Loader from '@/components/Loader';
 
 interface IStoreItemProps {}
 
@@ -13,9 +14,7 @@ const StoreItem: React.FC<IStoreItemProps> = (props) => {
 
 	const [fitState, setFitState] = useState<'contain' | 'cover'>('contain');
 
-	const handlePhotoClick = () => {
-		setFitState((prev) => (prev === 'contain' ? 'cover' : 'contain'));
-	};
+	if (isLoading) return <Loader />;
 
 	return (
 		<motion.div
@@ -36,7 +35,14 @@ const StoreItem: React.FC<IStoreItemProps> = (props) => {
 						</div>
 					</div>
 				</div>
-				<div onClick={handlePhotoClick} className='h-full bg-red'>
+				<div
+					onClick={() =>
+						setFitState((prev) =>
+							prev === 'contain' ? 'cover' : 'contain'
+						)
+					}
+					className='h-full bg-red'
+				>
 					<Image
 						src={data?.url}
 						width={1080}

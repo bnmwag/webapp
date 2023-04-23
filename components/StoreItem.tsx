@@ -18,17 +18,20 @@ const StoreItem: React.FC<IStoreItemProps> = ({ item, userId }) => {
 			href={`/storeItem/${item.id}`}
 			className='overflow-hidden rounded-lg w-full relative group cursor-pointer block'
 		>
-			<div className='absolute right-0 top-0 py-2 px-2 w-1/2 bg-white flex items-center gap-8 justify-end rounded-bl-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 border-2 border-white'>
+			<Link
+				href={`/users/${userId}`}
+				className='absolute right-0 top-0 py-2 px-2 w-1/2 bg-white flex items-center gap-8 justify-end rounded-bl-lg z-10 border-2 border-white'
+			>
 				{user?.username}
 				<Avatar userId={userId} />
-			</div>
+			</Link>
 
 			<Image
 				src={item.url}
 				alt={user?.username + 's image'}
 				width={500}
 				height={500}
-				className='h-full w-full fit'
+				className='h-full w-full fit group-hover:scale-105 transition-transform duration-300'
 			/>
 		</Link>
 	);

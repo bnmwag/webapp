@@ -8,9 +8,10 @@ import Link from 'next/link';
 interface IStoreItemProps {
 	item: Record<string, any>;
 	userId: string;
+	showOwner?: boolean;
 }
 
-const StoreItem: React.FC<IStoreItemProps> = ({ item, userId }) => {
+const StoreItem: React.FC<IStoreItemProps> = ({ item, userId, showOwner }) => {
 	const { data: user } = useUser(userId);
 
 	return (
@@ -21,6 +22,15 @@ const StoreItem: React.FC<IStoreItemProps> = ({ item, userId }) => {
 			<Link
 				href={`/users/${userId}`}
 				className='absolute right-0 top-0 py-2 px-2 w-1/2 bg-white flex items-center gap-8 justify-end rounded-bl-lg z-10 border-2 border-white'
+				style={
+					showOwner
+						? {
+								display: 'flex',
+						  }
+						: {
+								display: 'none',
+						  }
+				}
 			>
 				{user?.username}
 				<Avatar userId={userId} />

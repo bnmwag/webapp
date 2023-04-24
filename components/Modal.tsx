@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import FeatherIcon from 'feather-icons-react';
 import Button from './Button';
 import Image from 'next/image';
+import useStoreItems from '@/hooks/useStoreItems';
 
 export interface IModalProps {
 	isOpen?: boolean;
@@ -40,18 +41,26 @@ const Modal: React.FunctionComponent<IModalProps> = ({
 	if (!isOpen) return null;
 
 	return (
-		<div className='fixed top-0 left-0 bottom-0 right-0 bg-white z-50 flex'>
-			<div className='absolute top-8 left-10'>
+		<div className='fixed top-0 left-0 bottom-0 right-0 z-50 flex bg-white'>
+			<div className='sm:w-2/3 hidden sm:block h-screen bg-neutral-100'>
 				<Image
-					src='./district-logo.svg'
-					width={25}
-					height={20}
-					alt='district logo'
+					src='./auth_bg.jpg'
+					alt='background'
+					width={1670}
+					height={1670}
+					className='h-full w-full object-cover'
 				/>
 			</div>
-			<div className='w-1/3 h-screen flex flex-col pt-64'>
-				<div className='flex items-center justify-between p-10'>
-					<h3 className='text-3xl font-semibold'>{title}</h3>
+
+			<div className='md:w-1/3 md:min-w-[500px] w-full h-screen flex flex-col justify-center bg-white bg-opacity-50 relative'>
+				<div className='absolute top-0 left-0 flex items-center justify-between p-20 w-full'>
+					<Image
+						src='./district-logo.svg'
+						width={25}
+						height={20}
+						alt='district logo'
+					/>
+
 					<button
 						onClick={handleClose}
 						className=' p-1 ml-auto border-0 hover:opacity-70 transition'
@@ -59,26 +68,21 @@ const Modal: React.FunctionComponent<IModalProps> = ({
 						<FeatherIcon icon='x' />
 					</button>
 				</div>
-				<div className='relative p-10 '>{body}</div>
-				<div className='flex flex-col gap-2 p-10 text-black items-start'>
+				<div className='p-20'>
+					<h3 className='text-3xl font-semibold'>{title}</h3>
+				</div>
+				<div className='relative p-20 '>{body}</div>
+				<div className='flex flex-col gap-2 p-20 text-black items-center '>
 					<Button
 						disabled={disabled}
 						label={actionLabel}
-						// secondary
+						fullWidth
 						large
+						secondary
 						onClick={handleSubmit}
 					/>
 					{footer}
 				</div>
-			</div>
-			<div className='w-2/3 overflow-hidden rounded-tl-3xl rounded-bl-3xl'>
-				<Image
-					src='https://media.discordapp.net/attachments/1078265198042943578/1100004082518863932/bango_geometric_bending_riffeled_3d_shape_black_white_high_reso_9e67d58b-d1c5-44ed-8cdc-92e41f180beb.png?width=1670&height=1670'
-					alt='background'
-					width={1670}
-					height={1670}
-					className='h-full w-full object-cover'
-				/>
 			</div>
 		</div>
 	);

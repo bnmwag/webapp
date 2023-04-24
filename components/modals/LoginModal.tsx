@@ -74,7 +74,7 @@ const LoginModal: React.FC = () => {
 		<Modal
 			disabled={isLoading}
 			isOpen={loginModal.isOpen}
-			title='Login'
+			title='Welcome back!'
 			actionLabel='Sign in'
 			onClose={loginModal.onClose}
 			onSubmit={onSubmit}

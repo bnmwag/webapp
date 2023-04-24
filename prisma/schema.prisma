@@ -9,11 +9,11 @@ datasource db {
 
 model User {
   id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  email          String    @unique
+  email          String?   @unique
   emailValidated DateTime?
-  username       String    @unique
-  hashedPassword String
-  name           String
+  username       String?   @unique
+  hashedPassword String?
+  name           String?
 
   bio          String?
   avatar       String?

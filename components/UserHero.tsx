@@ -5,6 +5,7 @@ import Avatar from './Avatar';
 import FeatherIcon from 'feather-icons-react';
 import Button from './Button';
 import useCurrentUser from '@/hooks/useCurrentUser';
+import useEditModal from '@/hooks/useEditModal';
 
 interface IUserHeroProps {
 	userId: string;
@@ -13,6 +14,8 @@ interface IUserHeroProps {
 const UserHero: React.FC<IUserHeroProps> = ({ userId }) => {
 	const { data: fetchedUser } = useUser(userId);
 	const { data: currentUser } = useCurrentUser();
+
+	const editModal = useEditModal();
 
 	const followersCount = fetchedUser?.followingIds.length || 0;
 
@@ -49,7 +52,10 @@ const UserHero: React.FC<IUserHeroProps> = ({ userId }) => {
 					</div>
 					<div className='mt-8'>
 						{currentUser?.id === userId ? (
-							<Button label='Edit Profile' />
+							<Button
+								label='Edit Profile'
+								onClick={() => editModal.onOpen()}
+							/>
 						) : (
 							<Button
 								label={

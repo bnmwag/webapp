@@ -6,8 +6,7 @@ const serverAuth = async (req: NextApiRequest) => {
 	const session = await getSession({ req });
 
 	if (!session?.user?.email) {
-		return;
-		// throw new Error('You must be signed in to access this page')
+		throw new Error('You must be signed in to access this page');
 	}
 
 	const currentUser = await prisma.user.findUnique({

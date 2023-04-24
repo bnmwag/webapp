@@ -14,8 +14,6 @@ const Input: React.FunctionComponent<IInputProps> = ({
 	disabled,
 	onChange,
 }) => {
-	const length = value?.length || 0;
-
 	return (
 		<input
 			disabled={disabled} //
@@ -24,9 +22,6 @@ const Input: React.FunctionComponent<IInputProps> = ({
 			placeholder={placeholder}
 			type={type}
 			className='w-full py-4 text-lg outline-none border-b-2 text-black transition focus:border-black disabled:bg-neutral-900 disabled:opacity-70 disabled:cursor-not-allowed'
-			style={{
-				borderColor: length > 0 ? '#98DE44' : '',
-			}}
 		/>
 	);
 };

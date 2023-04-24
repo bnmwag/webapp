@@ -13,6 +13,7 @@ const Feed: React.FC<IFeedProps> = ({ userId }) => {
 
 	return (
 		<div className='max-w-[1440px] w-full flex flex-wrap gap-4 justify-between'>
+			asd
 			<div className='flex flex-col w-full md:w-[32.5%]'>
 				{storeItems
 					.filter((_: any, index: number) => index % 3 === 0)

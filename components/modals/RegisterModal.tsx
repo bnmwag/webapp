@@ -90,7 +90,7 @@ const RegisterModal: React.FC = () => {
 			<p>
 				Already have an account?
 				<span
-					className='text-white cursor-pointer hover:underline'
+					className='text-black cursor-pointer hover:underline'
 					onClick={onToggle}
 				>
 					{' '}

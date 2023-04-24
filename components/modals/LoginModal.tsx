@@ -59,9 +59,9 @@ const LoginModal: React.FC = () => {
 	const footerContent = (
 		<div className='text-neutral-400 text-center mt-4'>
 			<p>
-				First time using Plitter?
+				First time using District?
 				<span
-					className='text-white cursor-pointer hover:underline'
+					className=' text-black cursor-pointer hover:underline'
 					onClick={onToggle}
 				>
 					{' '}

@@ -39,7 +39,7 @@ const LoginModal: React.FC = () => {
 		}
 	}, [loginModal, email, password]);
 
-	const bodyConent = (
+	const bodyContent = (
 		<div className='flex flex-col gap-4'>
 			<Input
 				placeholder='Email'
@@ -59,12 +59,11 @@ const LoginModal: React.FC = () => {
 	const footerContent = (
 		<div className='text-neutral-400 text-center mt-4'>
 			<p>
-				First time using District?
+				First time using District?{' '}
 				<span
 					className=' text-black cursor-pointer hover:underline'
 					onClick={onToggle}
 				>
-					{' '}
 					Create an account
 				</span>
 			</p>
@@ -79,7 +78,7 @@ const LoginModal: React.FC = () => {
 			actionLabel='Sign in'
 			onClose={loginModal.onClose}
 			onSubmit={onSubmit}
-			body={bodyConent}
+			body={bodyContent}
 			footer={footerContent}
 		/>
 	);

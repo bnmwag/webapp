@@ -2,6 +2,8 @@ import { NavBar } from '@/components';
 import Layout from '@/components/Layout';
 import LoginModal from '@/components/modals/LoginModal';
 import RegisterModal from '@/components/modals/RegisterModal';
+import useLoginModal from '@/hooks/useLoginModal';
+import useRegisterModal from '@/hooks/useRegisterModal';
 import '@/styles/globals.css';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { AnimatePresence } from 'framer-motion';
@@ -14,6 +16,10 @@ import { Toaster } from 'react-hot-toast';
 export default function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	const [shouldRender, setShouldRender] = useState(true);
+	const [scrollEnabled, setScrollEnabled] = useState(true);
+
+	const loginModal = useLoginModal();
+	const registerModal = useRegisterModal();
 
 	useEffect(() => {
 		const handleRouteChangeStart = () => {
@@ -33,6 +39,14 @@ export default function App({ Component, pageProps }: AppProps) {
 		};
 	}, [router]);
 
+	useEffect(() => {
+		if (loginModal.isOpen || registerModal.isOpen) {
+			setScrollEnabled(false);
+		} else {
+			setScrollEnabled(true);
+		}
+	}, [loginModal, registerModal]);
+
 	return (
 		<SessionProvider session={pageProps.session}>
 			<NavBar />
@@ -44,7 +58,15 @@ export default function App({ Component, pageProps }: AppProps) {
 			<ReactLenis root>
 				<AnimatePresence mode='wait'>
 					{shouldRender && (
-						<main className='mt-[75px] flex flex-col items-center'>
+						<main
+							className='mt-[75px] flex flex-col items-center
+					 overflow-x-hidden
+						'
+							style={{
+								height: scrollEnabled ? 'max-content' : '50vh',
+								overflowY: scrollEnabled ? 'scroll' : 'hidden',
+							}}
+						>
 							<Component {...pageProps} />
 						</main>
 					)}

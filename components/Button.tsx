@@ -22,7 +22,7 @@ const Button: React.FunctionComponent<IButtonProps> = ({
 		<button
 			disabled={disabled}
 			onClick={onClick}
-			className={`disabled:opacity-70 disabled:cursor-not-allowed rounded-full font-semibold hover:opacity-80 transition border-2
+			className={`disabled:opacity-70 disabled:cursor-not-allowed rounded-[5px] font-semibold hover:opacity-80 transition border-2
                 ${fullWidth ? 'w-full' : 'w-fit'}
                 ${secondary ? 'bg-white' : 'bg-sky-500'}
                 ${secondary ? 'text-black' : 'text-white'}

@@ -15,7 +15,7 @@ const NavBar: React.FC<INavBarProps> = (props) => {
 	const loginModal = useLoginModal();
 
 	return (
-		<div className='fixed top-0 left-0 w-screen h-[75px] shadow-md bg-white z-50'>
+		<div className='fixed top-0 left-0 w-screen h-[75px] shadow-md bg-white z-40'>
 			<div className='flex items-center justify-between h-full px-36'>
 				<div className='flex items-center gap-36 h-full'>
 					<Link className='flex items-center cursor-pointer' href='/'>

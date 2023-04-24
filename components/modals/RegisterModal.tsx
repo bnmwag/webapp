@@ -88,12 +88,11 @@ const RegisterModal: React.FC = () => {
 	const footerContent = (
 		<div className='text-neutral-400 text-center mt-4'>
 			<p>
-				Already have an account?
+				Already have an account?{' '}
 				<span
 					className='text-black cursor-pointer hover:underline'
 					onClick={onToggle}
 				>
-					{' '}
 					Sign in
 				</span>
 			</p>

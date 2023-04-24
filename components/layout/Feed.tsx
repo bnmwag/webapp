@@ -7,11 +7,13 @@ interface IFeedProps {
 }
 
 const Feed: React.FC<IFeedProps> = ({ userId }) => {
-	const { data: storeItems = [] } = useStoreItems(userId);
+	const { data: storeItems = [], isLoading } = useStoreItems(userId);
+
+	if (isLoading) return <div>Loading...</div>;
 
 	return (
-		<div className='max-w-[1440px] w-full flex flex-wrap gap-4'>
-			<div className='flex flex-col w-full md:w-[30%]'>
+		<div className='max-w-[1440px] w-full flex flex-wrap gap-4 justify-between'>
+			<div className='flex flex-col w-full md:w-[32.5%]'>
 				{storeItems
 					.filter((_: any, index: number) => index % 3 === 0)
 					.map((item: Record<string, any>) => (
@@ -24,7 +26,7 @@ const Feed: React.FC<IFeedProps> = ({ userId }) => {
 						</div>
 					))}
 			</div>
-			<div className='flex flex-col w-full md:w-[30%]'>
+			<div className='flex flex-col w-full md:w-[32.5%]'>
 				{storeItems
 					.filter((_: any, index: number) => index % 3 === 1)
 					.map((item: Record<string, any>) => (
@@ -37,7 +39,7 @@ const Feed: React.FC<IFeedProps> = ({ userId }) => {
 						</div>
 					))}
 			</div>
-			<div className='flex flex-col w-full md:w-[30%]'>
+			<div className='flex flex-col w-full md:w-[32.5%]'>
 				{storeItems
 					.filter((_: any, index: number) => index % 3 === 2)
 					.map((item: Record<string, any>) => (

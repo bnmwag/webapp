@@ -2,8 +2,8 @@ import useSWR from 'swr';
 
 import fetcher from '@/libs/fetcher';
 
-const useStoreItems = (itemId?: string) => {
-	const url = itemId ? `/api/storeItems?itemId=${itemId}` : '/api/storeItems';
+const useStoreItems = (userId?: string) => {
+	const url = userId ? `/api/storeItems?userId=${userId}` : '/api/storeItems';
 
 	const { data, error, isLoading, mutate } = useSWR(url, fetcher);
 

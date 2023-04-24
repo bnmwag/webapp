@@ -1,4 +1,4 @@
-// import serverAuth from "@/libs/serverAuth"
+// import serverAuth from "@/libs/serverAuth"x
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/libs/prismadb';
 
@@ -20,6 +20,9 @@ export default async function handler(
 		const storeItem = await prisma.storeItem.findUnique({
 			where: {
 				id: itemId,
+			},
+			include: {
+				user: true,
 			},
 		});
 

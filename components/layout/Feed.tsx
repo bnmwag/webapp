@@ -16,7 +16,11 @@ const Feed: React.FC<IFeedProps> = ({ userId }) => {
 					.filter((_: any, index: number) => index % 3 === 0)
 					.map((item: Record<string, any>) => (
 						<div className='mb-4' key={item.id}>
-							<StoreItem item={item} userId={item.userId} />
+							<StoreItem
+								item={item}
+								userId={item.userId}
+								showOwner={userId ? false : true}
+							/>
 						</div>
 					))}
 			</div>
@@ -25,7 +29,11 @@ const Feed: React.FC<IFeedProps> = ({ userId }) => {
 					.filter((_: any, index: number) => index % 3 === 1)
 					.map((item: Record<string, any>) => (
 						<div className='mb-4' key={item.id}>
-							<StoreItem item={item} userId={item.userId} />
+							<StoreItem
+								item={item}
+								userId={item.userId}
+								showOwner={userId ? false : true}
+							/>
 						</div>
 					))}
 			</div>
@@ -34,7 +42,11 @@ const Feed: React.FC<IFeedProps> = ({ userId }) => {
 					.filter((_: any, index: number) => index % 3 === 2)
 					.map((item: Record<string, any>) => (
 						<div className='mb-4' key={item.id}>
-							<StoreItem item={item} userId={item.userId} />
+							<StoreItem
+								item={item}
+								userId={item.userId}
+								showOwner={userId ? false : true}
+							/>
 						</div>
 					))}
 			</div>
